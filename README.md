@@ -26,9 +26,17 @@ Using the HoughLinesP(),detect line co-ordinates for every points in the images.
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+```
+```
 image = cv2.imread('dog.jpg')  # Replace with your image path
+```
+```
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+```
+```
 edges = cv2.Canny(gray_image, 50, 150, apertureSize=3)
+```
+```
 # Detect lines using the probabilistic Hough transform
 lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi/180, threshold=100, minLineLength=50, maxLineGap=10)
 
@@ -40,40 +48,47 @@ if lines is not None:
         x1, y1, x2, y2 = line[0]
         cv2.line(output_image, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-# Displaying results using Matplotlib
-plt.figure(figsize=(12, 12))
-
-# Input Image and Grayscale Image
-plt.subplot(2, 2, 1)
+```
+```
+# Display Input Image
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 plt.title('Input Image')
 plt.axis('off')
+plt.show()
 
-plt.subplot(2, 2, 2)
+# Display Grayscale Image
 plt.imshow(gray_image, cmap='gray')
 plt.title('Grayscale Image')
 plt.axis('off')
+plt.show()
 
-# Canny Edge Detection Output
-plt.subplot(2, 2, 3)
+# Display Canny Edge Detection Output
 plt.imshow(edges, cmap='gray')
 plt.title('Canny Edge Detector Output')
 plt.axis('off')
+plt.show()
 
-# Hough Transform Result
-plt.subplot(2, 2, 4)
+# Display Hough Transform Result
 plt.imshow(cv2.cvtColor(output_image, cv2.COLOR_BGR2RGB))
 plt.title('Hough Transform - Line Detection')
 plt.axis('off')
-
-# Display all results
 plt.show()
+
 ```
 
 
 ## Output
 
-![image](https://github.com/user-attachments/assets/572946f8-c945-46e4-8fbd-e90241f11ee2)
+### Input image and grayscale image
+![image](https://github.com/user-attachments/assets/df3f6dfc-eaa5-4cb2-bc6c-6e18a9078195)
+![image](https://github.com/user-attachments/assets/82e8d076-4152-47db-b0d5-e6f8721c130f)
+
+### Canny Edge detector output
+![image](https://github.com/user-attachments/assets/d17d4ada-0353-4561-bc5f-8d31b8c5570c)
+
+### Display the result of Hough transform
+![image](https://github.com/user-attachments/assets/ca3e2fa7-ba51-4c78-b5ea-3634e53822f6)
+
 
 ## Result: 
 Thus the python program to detect the lines using Hough Transform was successfully completed.
